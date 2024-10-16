@@ -1,7 +1,8 @@
 import { Router } from "express";
 import { body } from "express-validator";
 import {
-    createBook
+    createBook,
+    updateBook
 } from "../controllers/book.controllers";
 import { upload } from '../middlewares/multer.middlewares';
 
@@ -21,5 +22,15 @@ router.post('/create',
     body('price').isNumeric().withMessage('Price must be a number'),
     // Add more validation rules as needed
    ], createBook);
+
+
+router.put('/update/:id',
+    upload.fields([
+        { 
+            name: 'coverImages',
+             maxCount: 5 
+        }
+    ]), updateBook);
+
 
 export default router;
