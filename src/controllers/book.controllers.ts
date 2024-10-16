@@ -176,4 +176,30 @@ export const updateBook = asyncHandler(async (req: Request, res: Response) => {
     }
   });
 
-
+export const deleteBook = asyncHandler(async (req: Request, res: Response) => {
+    const { id } = req.params;
+  
+    try {
+      const book = await Book.findById(id);
+      if (!book) {
+        return res.status(404).json({
+          success: false,
+          message: "Book not found.",
+        });
+      }
+  
+      await Book.findByIdAndDelete(id);
+  
+      res.status(200).json({
+        success: true,
+        message: "Book deleted successfully!",
+      });
+  
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: "Internal server error.",
+        error: error,
+      });
+    }
+  });
