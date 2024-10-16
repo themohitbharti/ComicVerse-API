@@ -8,7 +8,7 @@ connectDB();
 const port = process.env.PORT || 3000;
 
 app.get('/' , (req,res) => {
-    res.send('Hello World');
+    res.send('The Mango Jelly is ready');
     console.log("The Mango Jelly is ready");
 })
 
