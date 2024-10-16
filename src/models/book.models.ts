@@ -14,7 +14,7 @@ export interface IBook extends Document {
   updatedAt: Date;
 }
 
-const comicBookSchema = new Schema<IBook>({
+const BookSchema = new Schema<IBook>({
   bookName: {
     type: String,
     required: true,
@@ -68,9 +68,9 @@ const comicBookSchema = new Schema<IBook>({
   },
 });
 
-comicBookSchema.pre<IBook>("save", function (next) {
+BookSchema.pre<IBook>("save", function (next) {
   this.updatedAt = new Date();
   next();
 });
 
-export const ComicBook = mongoose.model<IBook>("ComicBook", comicBookSchema);
+export const Book = mongoose.model<IBook>("Book", BookSchema);
