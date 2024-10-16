@@ -3,6 +3,7 @@ import mongoose, { Document, Schema } from "mongoose";
 export interface IBook extends Document {
   bookName: string;
   authorName: string;
+  coverImage?: string;
   year: number;
   price: number;
   discount?: number;
@@ -25,6 +26,10 @@ const comicBookSchema = new Schema<IBook>({
     required: true,
     trim: true,
   },
+    coverImage: {
+    type: String,
+    trim: true,
+    },
   year: {
     type: Number,
     required: true,
