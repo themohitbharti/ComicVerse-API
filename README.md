@@ -46,8 +46,5 @@ The ComicVerse API is a backend system designed for managing comic book inventor
    ```bash
    npm run start
 
-## Postman Documentation
-
-You can find the Postman documentation for the ComicVerse API [(https://documenter.getpostman.com/view/30375049/2sAXxV69vj)].
 
 I hope you find this Project Interesting!
