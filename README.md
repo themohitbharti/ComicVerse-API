@@ -1,4 +1,4 @@
-# ComicVerse - Comic Book Management Backend
+# ComicVerse - ComicBook Store Management Backend
 
 ## Description
 
@@ -18,7 +18,6 @@ The ComicVerse API is a backend system designed for managing comic book inventor
 - **Express.js**: Web framework for creating RESTful APIs.
 - **MongoDB**: NoSQL database for storing comic book details.
 - **Mongoose**: ODM for connecting and managing MongoDB collections.
-- **dotenv**: Module for managing environment variables.
 - **pm2**: Process manager for running the app in production.
 
 ## Installation
@@ -26,4 +25,29 @@ The ComicVerse API is a backend system designed for managing comic book inventor
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-github-username/comicverse-backend.git
+   git clone https://github.com/themohitbharti/ComicVerse-API.git
+
+1. **Navigate to the project directory:**
+
+   ```bash
+   cd comicverse-backend
+
+3. **Install dependencies:**
+
+   ```bash
+   npm install
+
+4. **Set up environment variables:**
+
+   Create a .env file in the root directory and add the variables from sample.env
+
+5. **Start the server:**
+
+   ```bash
+   npm run start
+
+## Postman Documentation
+
+You can find the Postman documentation for the ComicVerse API [(https://documenter.getpostman.com/view/30375049/2sAXxV69vj)].
+
+I hope you find this Project Interesting!
