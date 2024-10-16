@@ -4,6 +4,7 @@ import {
     createBook,
     updateBook,
     deleteBook,
+    fetchInventoryList,
 } from "../controllers/book.controllers";
 import { upload } from '../middlewares/multer.middlewares';
 
@@ -35,5 +36,7 @@ router.put('/update/:id',
 
 
  router.delete("/delete/:id", deleteBook);
+
+ router.get("/inventory", fetchInventoryList);
 
 export default router;

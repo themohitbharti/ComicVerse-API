@@ -203,3 +203,50 @@ export const deleteBook = asyncHandler(async (req: Request, res: Response) => {
       });
     }
   });
+
+
+export const fetchInventoryList = asyncHandler(async (req: Request, res: Response) => {
+    const { page = 1, limit = 10, author, year, price, condition, sortBy = 'bookName', sortOrder = 'asc' } = req.query;
+  
+    const pageNumber = Number(page);
+    const limitNumber = Number(limit);
+  
+    try {
+      const filter: any = {};
+      if (author) filter.authorName = author;
+      if (year) filter.year = year;
+      if (price) filter.price = { $lte: Number(price) };
+      if (condition) filter.condition = condition;
+  
+      const sortOptions: any = {};
+      if (sortBy && typeof sortBy === 'string') {
+        sortOptions[sortBy] = sortOrder === 'desc' ? -1 : 1;
+      }
+  
+      const books = await Book.find(filter)
+        .sort(sortOptions)
+        .skip((pageNumber - 1) * limitNumber)
+        .limit(limitNumber);
+  
+      const totalBooks = await Book.countDocuments(filter);
+  
+      res.status(200).json({
+        success: true,
+        message: "Inventory fetched successfully!",
+        data: books,
+        pagination: {
+          total: totalBooks,
+          page: pageNumber,
+          limit: limitNumber,
+          totalPages: Math.ceil(totalBooks / limitNumber),
+        },
+      });
+  
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: "Internal server error.",
+        error: error,
+      });
+    }
+  });  
